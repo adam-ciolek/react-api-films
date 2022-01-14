@@ -7,65 +7,51 @@ export  const links = [
     url: '/'
   },
   { id: 2,
-    name: 'Trending',
-    url: ''
+    name: 'In Threaters',
+    url: 'in-threaters'
   },
   { id: 3,
     name: 'Favorite',
     url: 'favorite'
   },
   { id: 4,
-    name: 'Comming soon',
+    name: 'Comming Soon',
     url: 'comming-soon'
   },
+]
+
+export const register = [
   { id: 5,
-    name: 'Sing in',
+    name: 'Sing In',
     url: 'sing-in'
   },
   { id: 6,
     name: 'Register',
     url: 'register'
   },
+
 ]
 
-export const images = [
-  {
-    id:1,
-    title: 'takie tam'
-  },
-  {
-    id:2,
-    title: 'takie '
-  },
-  {
-    id:3,
-    title: 'takie i'
-  },
-  {
-    id:4,
-    title: 'takie o'
-  },
-]
 
 export const filters = [
   {
-    id: 1,
+    id: 'action',
     title: 'action'
   },
   {
-    id: 2,
+    id: 'science fiction',
     title: 'science fiction'
   },
   {
-    id: 3,
+    id: 'romance',
     title: 'romance'
   },
   {
-    id: 4,
-    title: 'true Story'
+    id: 'comedy',
+    title: 'comedy'
   },
   {
-    id: 5,
+    id: 'biography',
     title: 'biography'
   },
 ]

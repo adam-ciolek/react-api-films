@@ -1,11 +1,13 @@
 // import data
 import {filters} from '../data';
+import Search from './Search';
 
 const FilterFilms = () => {
   return (
     <>
-      <div className='flex justify-between'>
+      <div className='flex justify-between items-center'>
         <h4>Recommanded Movie</h4>
+        <Search />
         <ul>
           {filters.map(filter => {
             const {id,title} = filter;

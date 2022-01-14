@@ -1,18 +1,21 @@
-import { useState } from 'react';
 // import icons
 import { FiSearch } from "react-icons/fi";
+// import global context
+import { useGlobalContext } from "../context";
 
 const Search = () => {
 
-  const [value,setValue] =useState('')
-  const [isOpen,setIsOpen] = useState(false);
+  const {search,setSearch} = useGlobalContext()
 
   return (
     <>
-      {isOpen && <input type='text' className={`grow bg-black text-white mr-1 rounded-md px-2 py-1 border-white`} placeholder="Search..." value={value} onChange={(e) => setValue(e.target.value)}/>}
-      <div className="px-2 py-1 ">
-        <FiSearch className="stroke-white  cursor-pointer text-2xl" onClick={() => setIsOpen(!isOpen)}/>
+    <div className="flex grow px-8 justify-end ">
+      {search && <input type='text' className= 'animate-search grow bg-black text-white mr-1 rounded-md px-2 py-1 border-t-0 border-l-0 border-r-0 border-2 border-b-sky outline-0' placeholder="Search..."/>
+      }
+      <div className="px-2 py-1 text-left ">
+        <FiSearch className="stroke-white  cursor-pointer text-2xl " onClick={() => setSearch(!search)}/>
       </div>
+    </div>
     </>
   )
 }
