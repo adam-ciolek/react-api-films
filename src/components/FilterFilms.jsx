@@ -4,23 +4,14 @@ import Search from "./Search";
 import { useGlobalContext } from "../context";
 
 const FilterFilms = () => {
-	const {
-		action,
-		setAction,
-		setPolpularIsOpen,
-		popularIsOpen,
-		setPopularMovie,
-	} = useGlobalContext();
+	const { setPopularMovie } = useGlobalContext();
 
 	const handleSearch = (e) => {
-		console.log(action);
 		// setPopularMovie([]);
-		setPolpularIsOpen(!popularIsOpen);
 		const target = e.target.id;
 		console.log(target);
 		const urlFilters = `https://imdb-api.com/API/AdvancedSearch/k_8d46y2yj?genres=${target}`;
 		fecthData(urlFilters);
-		console.log(action);
 	};
 
 	const fecthData = (url) => {
@@ -28,8 +19,8 @@ const FilterFilms = () => {
 			.then((resp) => resp.json())
 			.then((data) => {
 				if (data) {
-					setAction([]);
-					setAction(data.results);
+					console.log(data.results);
+					setPopularMovie(data.results);
 				}
 			});
 	};

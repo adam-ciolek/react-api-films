@@ -7,25 +7,23 @@ const urlSoon = "https://imdb-api.com/en/API/ComingSoon/k_8d46y2yj";
 // api in threaters
 const urlThreates = "https://imdb-api.com/en/API/InTheaters/k_8d46y2yj";
 // api youtube trailer
-const urlTrailer =
-	"https://imdb-api.com/en/API/YouTubeTrailer/k_8d46y2yj/tt1375666";
+// const urlTrailer =
+// 	"https://imdb-api.com/en/API/YouTubeTrailer/k_8d46y2yj/tt1375666";
 
 const MyContext = React.createContext();
 
 const MyStorage = ({ children }) => {
+	const [filter, setFilter] = useState("");
 	const [search, setSearch] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	// data recommanded Movie
 	const [popularMovie, setPopularMovie] = useState([]);
-	const [popularIsOpen, setPolpularIsOpen] = useState(true);
 	// data comming soon
 	const [soon, setSoon] = useState([]);
 	// data threaters
 	const [threaters, setThreates] = useState([]);
 	// slider
 	const [slider, setSlider] = useState([]);
-	// Movie action
-	const [action, setAction] = useState([]);
 
 	// Most Popular Movies data
 	const fetchDataPopular = async () => {
@@ -78,14 +76,6 @@ const MyStorage = ({ children }) => {
 			setIsLoading(false);
 		}
 	};
-	// search movie
-	const handleSearch = (e) => {
-		const target = e.target.value;
-		const newFilm = popularMovie.filter((value) =>
-			value.title.toLowerCase().includes(target.toLowerCase())
-		);
-		return target === "" ? fetchDataPopular() : setPopularMovie(newFilm);
-	};
 
 	useEffect(() => {
 		fetchDataPopular();
@@ -108,11 +98,8 @@ const MyStorage = ({ children }) => {
 				threaters,
 				soon,
 				setPopularMovie,
-				popularIsOpen,
-				setPolpularIsOpen,
-				action,
-				setAction,
-				handleSearch,
+				setFilter,
+				filter,
 			}}
 		>
 			{children}

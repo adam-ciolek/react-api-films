@@ -58,17 +58,6 @@ const Register = () => {
 									className="py-2 px-2 rounded outline-0 text-black"
 								/>
 							</div>
-							<div className="my-4">
-								<input
-									type="radio"
-									id="radio"
-									name="radio"
-									className="cursor-pointer mr-3 outline-0"
-								/>
-								<label htmlFor="radio" className="capitalize cursor-pointer">
-									remember me
-								</label>
-							</div>
 							<button
 								type="submit"
 								className="capitalize my-4 w-full bg-white p-2 text-sky font-bold rounded-lg hover:bg-sky-three hover:text-white hover:transition"

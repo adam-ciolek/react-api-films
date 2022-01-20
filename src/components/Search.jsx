@@ -4,7 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import { useGlobalContext } from "../context";
 
 const Search = () => {
-	const { handleSearch, search, setSearch } = useGlobalContext();
+	const { search, setSearch, setFilter } = useGlobalContext();
 
 	return (
 		<>
@@ -14,7 +14,7 @@ const Search = () => {
 						type="text"
 						className="animate-search grow bg-black text-white mr-1 rounded-md px-2 py-1 border-t-0 border-l-0 border-r-0 border-2 border-b-sky outline-0"
 						placeholder="Search..."
-						onChange={handleSearch}
+						onChange={(e) => setFilter(e.target.value)}
 					/>
 				)}
 				<div className="px-2 py-1 text-left ">

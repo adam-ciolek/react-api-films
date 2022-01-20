@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const FilmSoon = ({ soon }) => {
+	if (soon.length <= 0) {
+		return <h1 className="capitalize">there are no movies</h1>;
+	}
+
 	return (
 		<>
 			{soon.map((movie) => {
