@@ -1,20 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 
 // api most popular movies (100)
-const url = "https://imdb-api.com/en/API/MostPopularMovies/k_8d46y2yj";
+const url = `https://imdb-api.com/en/API/MostPopularMovies/${process.env.REACT_APP_ACCESS_KEY}`;
 // api comming soon
-const urlSoon = "https://imdb-api.com/en/API/ComingSoon/k_8d46y2yj";
+const urlSoon = `https://imdb-api.com/en/API/ComingSoon/${process.env.REACT_APP_ACCESS_KEY}`;
 // api in threaters
-const urlThreates = "https://imdb-api.com/en/API/InTheaters/k_8d46y2yj";
+const urlThreates = `https://imdb-api.com/en/API/InTheaters/${process.env.REACT_APP_ACCESS_KEY}`;
 // api youtube trailer
-// const urlTrailer =
-// 	"https://imdb-api.com/en/API/YouTubeTrailer/k_8d46y2yj/tt1375666";
 
 const MyContext = React.createContext();
 
 const MyStorage = ({ children }) => {
 	const [filter, setFilter] = useState("");
-	const [search, setSearch] = useState(false);
+	// const [search, setSearch] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	// data recommanded Movie
 	const [popularMovie, setPopularMovie] = useState([]);
@@ -24,6 +22,8 @@ const MyStorage = ({ children }) => {
 	const [threaters, setThreates] = useState([]);
 	// slider
 	const [slider, setSlider] = useState([]);
+	// server busy show error
+	const [busy, setBusy] = useState("");
 
 	// Most Popular Movies data
 	const fetchDataPopular = async () => {
@@ -40,7 +40,7 @@ const MyStorage = ({ children }) => {
 			}
 			setIsLoading(false);
 		} catch (error) {
-			throw new Error("error");
+			console.log(error);
 			setIsLoading(false);
 		}
 	};
@@ -53,10 +53,10 @@ const MyStorage = ({ children }) => {
 			const data = await response.json();
 			if (data) {
 				setThreates(data.items);
-				setIsLoading(false);
 			}
+			setIsLoading(false);
 		} catch (error) {
-			throw new Error("error");
+			console.log(error);
 			setIsLoading(false);
 		}
 	};
@@ -72,7 +72,7 @@ const MyStorage = ({ children }) => {
 				setIsLoading(false);
 			}
 		} catch (error) {
-			throw new Error("error");
+			console.log(error);
 			setIsLoading(false);
 		}
 	};
@@ -89,10 +89,9 @@ const MyStorage = ({ children }) => {
 	return (
 		<MyContext.Provider
 			value={{
+				fetchDataPopular,
 				isLoading,
 				setIsLoading,
-				search,
-				setSearch,
 				slider,
 				popularMovie,
 				threaters,
@@ -100,6 +99,8 @@ const MyStorage = ({ children }) => {
 				setPopularMovie,
 				setFilter,
 				filter,
+				busy,
+				setBusy,
 			}}
 		>
 			{children}

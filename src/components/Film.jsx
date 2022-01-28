@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 
 const Film = ({ popularMovie }) => {
-	const { filter } = useGlobalContext();
+	const { filter, isLoading, busy, fetchDataPopular } = useGlobalContext();
 
-	if (popularMovie.length === 0) {
-		return <h1 className="text-center">Can't find a movie</h1>;
+	if (isLoading) {
+		return <h2 className="capitalize text-center">loading...</h2>;
+	}
+
+	if (busy) {
+		return (
+			<div className="absolute px-4">
+				<h2>{busy} , We are so sorry for the inconvenience</h2>
+			</div>
+		);
 	}
 
 	return (

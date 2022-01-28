@@ -4,24 +4,19 @@ import { FiSearch } from "react-icons/fi";
 import { useGlobalContext } from "../context";
 
 const Search = () => {
-	const { search, setSearch, setFilter } = useGlobalContext();
+	const { setFilter } = useGlobalContext();
 
 	return (
 		<>
-			<div className="flex grow px-8 justify-end ">
-				{search && (
-					<input
-						type="text"
-						className="animate-search grow bg-black text-white mr-1 rounded-md px-2 py-1 border-t-0 border-l-0 border-r-0 border-2 border-b-sky outline-0"
-						placeholder="Search..."
-						onChange={(e) => setFilter(e.target.value)}
-					/>
-				)}
-				<div className="px-2 py-1 text-left ">
-					<FiSearch
-						className="stroke-white  cursor-pointer text-2xl"
-						onClick={() => setSearch(!search)}
-					/>
+			<div className="flex grow  sm:w-8/12 ml-1 lg:w-auto lg:ml-1 ">
+				<input
+					type="text"
+					className="animate-search grow bg-black text-white sm:mr-1 rounded-md px-2 py-1 border-t-0 border-l-0 border-r-0 border-2 border-b-sky outline-0 "
+					placeholder="Search..."
+					onChange={(e) => setFilter(e.target.value)}
+				/>
+				<div className="px-2 py-1 text-left sm:block hidden">
+					<FiSearch className="stroke-white  cursor-pointer text-2xl" />
 				</div>
 			</div>
 		</>

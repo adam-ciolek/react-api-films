@@ -82,25 +82,25 @@ const SingleFilm = () => {
 
 	return (
 		<>
-			<article className="container  max-w-3xl mx-auto">
-				<div className="flex flex-row my-28 justify-between">
-					<div className="xs:w-64 w-64">
+			<article className="container  lg:max-w-3xl mx-auto max-w-xs sm:max-w-xl lg:text-left">
+				<div className="flex lg:flex-row my-28 lg:justify-between flex-col ">
+					<div className="w-64 lg:w-64 self-center">
 						<img src={img} alt={title} />
 					</div>
-					<div>
+					<div className="px-4 sm:px-0 mt-8 lg:mt-0 flex flex-col sm:items-center lg:items-start">
 						<h2 className="mb-2">{title}</h2>
-						<div className="flex flex-row">
+						<div className="flex sm:flex-row flex-col">
 							<span>{date}</span>
-							<span className="mx-4">{genres}</span>
+							<span className="sm:mx-4">{genres}</span>
 							<span>{time === 0 ? "" : time}</span>
 						</div>
-						<div className="flex flex-row my-3">
+						<div className="flex sm:flex-row my-3 flex-col">
 							<span>
 								{rating === "" || rating === null
 									? "No rating"
 									: `${parseFloat(rating).toFixed(1)}`}
+								<span className="sm:mx-4 ml-4">{votes} votes</span>
 							</span>
-							<span className="mx-4">{votes} votes</span>
 							<span>Dodaj do ulubionych</span>
 						</div>
 						<p className="italic opacity-70">{tagline}</p>

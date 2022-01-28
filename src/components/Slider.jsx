@@ -23,10 +23,26 @@ const SliderImage = () => {
 				autoplay={{ delay: 5000 }}
 				grabCursor={true}
 				centeredSlides={true}
-				slidesPerView={4}
 				loop={true}
-				// navigation={true}
 				effect={"coverflow"}
+				breakpoints={{
+					400: {
+						slidesPerView: 2,
+						spaceBetween: 20,
+					},
+					640: {
+						slidesPerView: 2,
+						spaceBetween: 20,
+					},
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 40,
+					},
+					1024: {
+						slidesPerView: 3,
+						spaceBetween: 50,
+					},
+				}}
 				coverflowEffect={{
 					rotate: 50,
 					stretch: 0,
@@ -42,14 +58,14 @@ const SliderImage = () => {
 						movie;
 					return (
 						<SwiperSlide key={id}>
-							<div className="flex bg-darkbg p-7 ">
+							<div className="flex bg-darkbg p-7 justify-center">
 								<img
 									src={image}
 									alt=""
 									className="rounded-md"
 									style={{ width: 150 }}
 								/>
-								<div className="ml-4">
+								<div className="ml-4 hidden sm:block">
 									<h3 className="text-lg">{title}</h3>
 									<h4 className="text-sm my-2">({year})</h4>
 									<div className="flex flex-row my-2">
